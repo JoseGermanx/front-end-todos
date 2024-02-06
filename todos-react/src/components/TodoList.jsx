@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Api } from "../config/api";
+import CreateToDo from "./CreateToDo";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -51,6 +52,7 @@ const TodoList = () => {
       <div className="row">
         <div className="col-12">
           <h2>Todo List</h2>
+          <CreateToDo />
           <span>
             {allDone === true ? (
               <p className="alert alert-success">Felicitaciones, All Done!!</p>
