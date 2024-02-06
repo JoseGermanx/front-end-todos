@@ -75,9 +75,7 @@ const TodoList = () => {
                       />
                     </div>
                   ) : (
-                    <div className="p-3">
-                      <input type="checkbox" disabled />
-                    </div>
+                    null
                   )}
                   <div
                     className="p-3"
