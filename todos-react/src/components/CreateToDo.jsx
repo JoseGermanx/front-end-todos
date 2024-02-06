@@ -20,12 +20,14 @@ const CreateToDo = () => {
                 label: description,
                 done: done
             };
-          Api.addTodo(data)
+          await Api.addTodo(data)
+          
+          location.reload();
         }
 
   return (
     <>
-        <div className="container">
+        <div className="container text-center m-3">
             <div className="row">
             <div className="col-12">
                 <form>
@@ -36,7 +38,7 @@ const CreateToDo = () => {
                     className="form-control"
                     id="description"
                     aria-describedby="descriptionHelp"
-                    placeholder="Enter description"
+                    placeholder="Ingresa la tarea"
                     onChange={(e) => handleDescription(e)}
                     />
                     <small id="descriptionHelp" className="form-text text-muted">
