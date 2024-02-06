@@ -1,0 +1,48 @@
+const url = 'http://192.168.1.96:3245';
+
+export class Api {
+    static async getTodos() {
+        const response = await fetch(`${url}/todos`);
+        return await response.json();
+    }
+    
+    static async addTodo(todo) {
+        const response = await fetch(`${url}/addtodos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(todo)
+        });
+        return await response.json();
+    }
+    
+    static async deleteTodoById(id) {
+        const response = await fetch(`${url}/delete/${id}`, {
+            method: 'DELETE'
+        });
+        return await response.json();
+    }
+
+    static async updateTodoById(id, todo) {
+        const response = await fetch(`${url}/update/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(todo)
+        });
+        return await response.json();
+    }
+
+    static async doneTodoById(id) {
+        const response = await fetch(`${url}/done/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return await response.json();
+    }
+
+}
