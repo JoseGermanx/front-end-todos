@@ -16,6 +16,7 @@ const CreateToDo = () => {
         
         const handleCreate = async (e) => {
             e.preventDefault();
+            if (description === "") return alert("La tarea no puede estar vacía");
             const data = {
                 label: description,
                 done: done
@@ -27,7 +28,7 @@ const CreateToDo = () => {
 
   return (
     <>
-        <div className="container text-center m-3">
+        <div className="container m-3">
             <div className="row">
             <div className="col-12">
                 <form>
