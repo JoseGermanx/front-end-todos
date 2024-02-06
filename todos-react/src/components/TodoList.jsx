@@ -3,6 +3,7 @@ import { Api } from "../config/api";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
+  const [allDone, setAllDone] = useState(false);
 
   useEffect(() => {
     Api.getTodos()
@@ -13,6 +14,13 @@ const TodoList = () => {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    if (todos.length > 0) {
+      const allDone = todos.every((todo) => todo.done === true);
+      setAllDone(allDone);
+    }
+  }, [todos]);
 
   const handleDone = async (e) => {
     await Api.doneTodoById(e).then((response) => {
@@ -35,6 +43,9 @@ const TodoList = () => {
       <div className="row">
         <div className="col-12">
           <h2>Todo List</h2>
+          <span>{
+            allDone === true && <p>Felicitaciones, All Done!!</p>
+            }</span>
 
           {todos.length === 0
             ? "No tienes tareas, crea una"
@@ -57,20 +68,20 @@ const TodoList = () => {
                     className="p-3"
                     style={{ listStyle: "none", textAlign: "initial" }}
                   >
-                    <p>
+                    <p className="align-midle">
                       {todo.label} - {todo.id} -{" "}
                       {todo.done === true ? "Done" : "Pending"}
                     </p>
                   </div>
                   <div className="p-3">
                     <button
-                      className="p-3"
+                      className="h-100 bg-danger text-white"
                       type="button"
                       onClick={() => handleDelete(todo.id)}
                     >
                       delete
                     </button>
-                    <button className="p-3" type="button">
+                    <button className="h-100 bg-warning text-white" type="button">
                       edit
                     </button>
                   </div>
