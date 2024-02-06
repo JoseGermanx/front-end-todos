@@ -48,7 +48,7 @@ const TodoList = () => {
   };
 
   return (
-    <div className="container p-3 rounded border border-solid">
+    <div className="container p-3 rounded border border-solid" style={{width:"500px"}}>
       <div className="row">
         <div className="col-12">
           <h2>Todo List</h2>
