@@ -5,14 +5,13 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    Api.getTodos().then((response) => {
-      setTodos(response);
-    })
-    .catch((error) => {
+    Api.getTodos()
+      .then((response) => {
+        setTodos(response);
+      })
+      .catch((error) => {
         console.log(error);
-        }
-    );
-    
+      });
   }, []);
 
   const handleDone = async (e) => {
@@ -29,33 +28,54 @@ const TodoList = () => {
     });
 
     location.reload();
-  }
-
+  };
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col-lg-12">
+        <div className="col-12">
           <h2>Todo List</h2>
-          <ul>
-            {todos.length === 0 ? "No tienes tareas, crea una" : todos.map((todo) => (
-              <div className="row" key={todo.id}>
-                {todo.done === false ? (
-                  <input type="checkbox" onChange={() => handleDone(todo.id)} style={{border:"green"}} />
-                ) : (
-                  <input type="checkbox" disabled />
-                )}
-                <li style={{ listStyle: "none", textJustify: "initial" }}>
-                  <p>
-                    {todo.label} - {todo.id}
-                  </p>
-                  {todo.done === true ? " - Done" : "Pending"}
-                </li>
-                <button type="button" onClick={()=> handleDelete(todo.id)}>delete</button>
-                <button>edit</button>
-              </div>
-            ))}
-          </ul>
+
+          {todos.length === 0
+            ? "No tienes tareas, crea una"
+            : todos.map((todo) => (
+                <div className="d-flex flex-row" key={todo.id}>
+                  {todo.done === false ? (
+                    <div className="p-3">
+                      <input
+                        type="checkbox"
+                        onChange={() => handleDone(todo.id)}
+                        style={{ border: 3 }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="p-3">
+                      <input type="checkbox" disabled />
+                    </div>
+                  )}
+                  <div
+                    className="p-3"
+                    style={{ listStyle: "none", textAlign: "initial" }}
+                  >
+                    <p>
+                      {todo.label} - {todo.id} -{" "}
+                      {todo.done === true ? "Done" : "Pending"}
+                    </p>
+                  </div>
+                  <div className="p-3">
+                    <button
+                      className="p-3"
+                      type="button"
+                      onClick={() => handleDelete(todo.id)}
+                    >
+                      delete
+                    </button>
+                    <button className="p-3" type="button">
+                      edit
+                    </button>
+                  </div>
+                </div>
+              ))}
         </div>
       </div>
     </div>
