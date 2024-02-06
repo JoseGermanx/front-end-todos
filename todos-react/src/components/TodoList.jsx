@@ -48,7 +48,7 @@ const TodoList = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container p-3 rounded border border-solid">
       <div className="row">
         <div className="col-12">
           <h2>Todo List</h2>
@@ -63,7 +63,7 @@ const TodoList = () => {
             )}
           </span>
           {todos.length === 0
-            ? "No tienes tareas, crea una"
+            ? <p className="alert alert-success">No tienes tareas creadas</p>
             : todos.map((todo) => (
                 <div className="d-flex flex-row" key={todo.id}>
                   {todo.done === false ? (
