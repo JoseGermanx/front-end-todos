@@ -1,7 +1,13 @@
 
 const Search = () => {
+
+    
+
   return (
-    <div>Search</div>
+    <>
+        <input type="text" placeholder="Search..." />
+        <button type="button">Search</button>
+    </>
   )
 }
 
