@@ -7,27 +7,28 @@ const TodoList = () => {
   useEffect(() => {
     Api.getTodos().then((response) => {
       setTodos(response);
-    });
-  }, [todos]);
+    })
+    .catch((error) => {
+        console.log(error);
+        }
+    );
+    
+  }, []);
 
-  const handleDone = (e) => {
-    Api.doneTodoById(e).then((response) => {
+  const handleDone = async (e) => {
+    await Api.doneTodoById(e).then((response) => {
       console.log(response);
     });
 
-    Api.getTodos().then((response) => {
-      setTodos(response);
-    });
+    location.reload();
   };
 
-  const handleDelete = (e) => {
-    Api.deleteTodoById(e).then((response) => {
+  const handleDelete = async (e) => {
+    await Api.deleteTodoById(e).then((response) => {
       console.log(response);
     });
 
-    Api.getTodos().then((response) => {
-      setTodos(response);
-    });
+    location.reload();
   }
 
 
@@ -37,7 +38,7 @@ const TodoList = () => {
         <div className="col-lg-12">
           <h2>Todo List</h2>
           <ul>
-            {todos.map((todo) => (
+            {todos.length === 0 ? "No tienes tareas, crea una" : todos.map((todo) => (
               <div className="row" key={todo.id}>
                 {todo.done === false ? (
                   <input type="checkbox" onChange={() => handleDone(todo.id)} style={{border:"green"}} />
