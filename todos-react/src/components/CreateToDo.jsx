@@ -57,7 +57,7 @@ const CreateToDo = () => {
                     Done
                     </label>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={(e) => handleCreate(e)}>
+                <button type="button" onClick={(e) => handleCreate(e)}>
                     Create
                 </button>
                 </form>

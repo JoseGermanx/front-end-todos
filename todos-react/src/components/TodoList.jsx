@@ -87,10 +87,12 @@ const TodoList = () => {
                       alignSelf: "center",
                     }}
                   >
-                    <p>
-                      {todo.label} - {todo.id} -{" "}
-                      {todo.done === true ? "✅ Done" : "Pending"}
-                    </p>
+                    {todo.done === true ? (
+                      <del>{todo.label}</del>
+                    ) : (
+                      <p>{todo.label}</p>
+                    )}
+                    <small> {todo.done === true ? "✅ Done" : "Pending"}</small>
                   </div>
                   <div className="p-3">
                     <button type="button" onClick={() => handleDelete(todo.id)}>
