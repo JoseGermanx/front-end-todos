@@ -51,10 +51,15 @@ const TodoList = () => {
       <div className="row">
         <div className="col-12">
           <h2>Todo List</h2>
-          <span>{
-            allDone === true ? <p className="alert alert-success">Felicitaciones, All Done!!</p>
-            : todoPending === true && <p className="alert alert-warning">Tienes tareas pendientes</p>
-            }</span>
+          <span>
+            {allDone === true ? (
+              <p className="alert alert-success">Felicitaciones, All Done!!</p>
+            ) : (
+              todoPending === true && (
+                <p className="alert alert-warning">Tienes tareas pendientes</p>
+              )
+            )}
+          </span>
           {todos.length === 0
             ? "No tienes tareas, crea una"
             : todos.map((todo) => (
@@ -74,23 +79,20 @@ const TodoList = () => {
                   )}
                   <div
                     className="p-3"
-                    style={{ listStyle: "none", textAlign: "initial" }}
+                    style={{
+                      listStyle: "none",
+                      textAlign: "initial",
+                      alignSelf: "center",
+                    }}
                   >
-                    <p className="align-midle">
+                    <p>
                       {todo.label} - {todo.id} -{" "}
-                      {todo.done === true ? "Done" : "Pending"}
+                      {todo.done === true ? "✅ Done" : "Pending"}
                     </p>
                   </div>
                   <div className="p-3">
-                    <button
-                      className="h-100 bg-danger text-white"
-                      type="button"
-                      onClick={() => handleDelete(todo.id)}
-                    >
-                      delete
-                    </button>
-                    <button className="h-100 bg-warning text-white" type="button">
-                      edit
+                    <button type="button" onClick={() => handleDelete(todo.id)}>
+                      🗑️
                     </button>
                   </div>
                 </div>
