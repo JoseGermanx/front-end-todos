@@ -65,7 +65,7 @@ const TodoList = () => {
           {todos.length === 0
             ? <p className="alert alert-success">No tienes tareas creadas</p>
             : todos.map((todo) => (
-                <div className="d-flex flex-row" key={todo.id}>
+                <div className="d-flex flex-row justify-content-between" key={todo.id}>
                   {todo.done === false ? (
                     <div className="p-3">
                       <input
@@ -81,7 +81,7 @@ const TodoList = () => {
                     className="p-3"
                     style={{
                       listStyle: "none",
-                      textAlign: "initial",
+                      textAlign: "justify",
                       alignSelf: "center",
                     }}
                   >
