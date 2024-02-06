@@ -42,9 +42,6 @@ const CreateToDo = () => {
                     placeholder="Ingresa la tarea"
                     onChange={(e) => handleDescription(e)}
                     />
-                    <small id="descriptionHelp" className="form-text text-muted">
-                    ¿Qué tienes que hacer?
-                    </small>
                 </div>
                 <div className="form-group form-check">
                     <input
