@@ -4,6 +4,7 @@ import { Api } from "../config/api";
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [allDone, setAllDone] = useState(false);
+  const [todoPending, setTodoPending] = useState(false);
 
   useEffect(() => {
     Api.getTodos()
@@ -19,6 +20,13 @@ const TodoList = () => {
     if (todos.length > 0) {
       const allDone = todos.every((todo) => todo.done === true);
       setAllDone(allDone);
+    }
+  }, [todos]);
+
+  useEffect(() => {
+    if (todos.length > 0) {
+      const todoPending = todos.some((todo) => todo.done === false);
+      setTodoPending(todoPending);
     }
   }, [todos]);
 
@@ -44,9 +52,9 @@ const TodoList = () => {
         <div className="col-12">
           <h2>Todo List</h2>
           <span>{
-            allDone === true && <p>Felicitaciones, All Done!!</p>
+            allDone === true ? <p className="alert alert-success">Felicitaciones, All Done!!</p>
+            : todoPending === true && <p className="alert alert-warning">Tienes tareas pendientes</p>
             }</span>
-
           {todos.length === 0
             ? "No tienes tareas, crea una"
             : todos.map((todo) => (
