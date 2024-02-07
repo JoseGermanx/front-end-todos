@@ -14,8 +14,7 @@ const CreateToDo = () => {
             setDone(e.target.checked);
         }
         
-        const handleCreate = async (e) => {
-            e.preventDefault();
+        const handleCreate = async (description, done) => {
             if (description === "") return alert("La tarea no puede estar vacía");
             const data = {
                 label: description,
@@ -24,6 +23,12 @@ const CreateToDo = () => {
           await Api.addTodo(data)
           
           location.reload();
+        }
+
+        const handleKeyDown = async (e) => {
+            if (e.keyCode === 13 || e.type === "click") {
+                await handleCreate(description, done);
+            }
         }
 
   return (
@@ -41,6 +46,7 @@ const CreateToDo = () => {
                     aria-describedby="descriptionHelp"
                     placeholder="Ingresa la tarea"
                     onChange={(e) => handleDescription(e)}
+                    onKeyDown={(e) => handleKeyDown(e)}
                     />
                 </div>
                 <div className="form-group form-check">
@@ -54,7 +60,7 @@ const CreateToDo = () => {
                     Done
                     </label>
                 </div>
-                <button type="button" onClick={(e) => handleCreate(e)}>
+                <button type="button" onClick={(e) => handleKeyDown(e)}>
                     Create
                 </button>
                 </form>
