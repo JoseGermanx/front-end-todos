@@ -15,7 +15,10 @@ const CreateToDo = () => {
         }
         
         const handleCreate = async (description, done) => {
-            if (description === "") return alert("La tarea no puede estar vacía");
+            if (description === "") {
+                document.getElementById("descriptionHelp").innerHTML = "La tarea no puede estar vacía";
+                return;            
+            }
             const data = {
                 label: description,
                 done: done
@@ -26,7 +29,9 @@ const CreateToDo = () => {
         }
 
         const handleKeyDown = async (e) => {
-            if (e.keyCode === 13 || e.type === "click") {
+            e.preventDefault();
+            //e.keyCode === 13 || 
+            if (e.type === "click") {
                 await handleCreate(description, done);
             }
         }
@@ -63,6 +68,7 @@ const CreateToDo = () => {
                 <button type="button" onClick={(e) => handleKeyDown(e)}>
                     Create
                 </button>
+                <p><span id="descriptionHelp" className="form-text text-danger"></span></p>
                 </form>
             </div>
             </div>
