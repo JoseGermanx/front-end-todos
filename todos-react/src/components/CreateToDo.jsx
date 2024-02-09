@@ -64,7 +64,7 @@ const CreateToDo = () => {
                     Done
                     </label>
                 </div>
-                <button type="button" onClick={(e) => handleKeyDown(e)}>
+                <button type="button" className="btn btn-secondary" onClick={(e) => handleKeyDown(e)}>
                     Create
                 </button>
                 <p><span id="descriptionHelp" className="form-text text-danger"></span></p>
