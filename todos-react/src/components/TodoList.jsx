@@ -76,7 +76,7 @@ const TodoList = () => {
                 todos.map((todo) => (
                   <tr key={todo.id}>
                     <td>{todo.label}</td>
-                    <td>{todo.label}</td>
+                    <td>{todo.done ? "Completada": "Incompleta"}</td>
                     <td>{todo.label}</td>
                   </tr>
                 ))}
