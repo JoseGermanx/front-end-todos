@@ -79,7 +79,7 @@ const TodoList = () => {
               ))}
             </tbody>
           </table>
-          <span>{todos.length === 0 && <p className="alert alert-success">Ingresa una tarea para empezar</p>}</span>
+          <span>{todos.length !== 0 ? null : <p className="alert alert-warning">Cargando....</p>}</span>
           <span>
             {allDone === true ? (
               <p className="alert alert-success">Congrast, your done!</p>
