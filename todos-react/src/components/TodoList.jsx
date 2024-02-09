@@ -57,6 +57,7 @@ const TodoList = () => {
           <table className="table table-striped">
             <thead>
               <tr>
+                <th>Done</th>
                 <th>Title</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -65,6 +66,13 @@ const TodoList = () => {
             <tbody>
               {todos.map((todo) => (
                 <tr key={todo.id}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={todo.done}
+                      onChange={() => handleDone(todo.id)}
+                    />
+                  </td>
                   <td>{todo.label}</td>
                   <td>{todo.done ? "Completada" : "Incompleta"}</td>
                   <td>
