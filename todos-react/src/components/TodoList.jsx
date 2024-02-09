@@ -54,6 +54,7 @@ const TodoList = () => {
           <CreateToDo />
         </div>
         <div className="col-8">
+          {todos.length === 0 ? <p className="alert alert-warning">No hay tareas</p>:
           <table className="table table-striped">
             <thead>
               <tr>
@@ -86,7 +87,7 @@ const TodoList = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table>}
           <span>{todos.length !== 0 ? null : <p className="alert alert-warning">Cargando....</p>}</span>
           <span>
             {allDone === true ? (
