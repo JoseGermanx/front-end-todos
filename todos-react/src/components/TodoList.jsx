@@ -48,10 +48,9 @@ const TodoList = () => {
   };
 
   return (
-    <div className="container p-3 rounded border border-solid" style={{width:"500px"}}>
+    <div className="container">
       <div className="row">
-        <div className="col-12">
-          <h2>Todo List</h2>
+        <div className="col-4">
           <CreateToDo />
           <span>
             {allDone === true ? (
@@ -62,43 +61,27 @@ const TodoList = () => {
               )
             )}
           </span>
-          {todos.length === 0
-            ? <p className="alert alert-success">No tienes tareas creadas</p>
-            : todos.map((todo) => (
-                <div className="d-flex flex-row justify-content-between" key={todo.id}>
-                  {todo.done === false ? (
-                    <div className="p-3">
-                      <input
-                        type="checkbox"
-                        onChange={() => handleDone(todo.id)}
-                        style={{ border: 3 }}
-                      />
-                    </div>
-                  ) : (
-                    null
-                  )}
-                  <div
-                    className="p-3"
-                    style={{
-                      listStyle: "none",
-                      textAlign: "justify",
-                      alignSelf: "center",
-                    }}
-                  >
-                    {todo.done === true ? (
-                      <del>{todo.label}</del>
-                    ) : (
-                      <p>{todo.label}</p>
-                    )}
-                    <small> {todo.done === true ? "✅ Done" : "Pending"}</small>
-                  </div>
-                  <div className="p-3">
-                    <button type="button" onClick={() => handleDelete(todo.id)}>
-                      🗑️
-                    </button>
-                  </div>
-                </div>
-              ))}
+        </div>
+        <div className="col-8">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                todos.map((todo) => (
+                  <tr key={todo.id}>
+                    <td>{todo.label}</td>
+                    <td>{todo.label}</td>
+                    <td>{todo.label}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

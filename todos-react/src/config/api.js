@@ -1,4 +1,4 @@
-const url = 'http://192.168.1.93:3245';
+const url = 'http://192.168.1.96:3245';
 
 export class Api {
     static async getTodos() {
