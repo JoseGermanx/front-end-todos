@@ -48,19 +48,10 @@ const TodoList = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       <div className="row">
         <div className="col-4">
           <CreateToDo />
-          <span>
-            {allDone === true ? (
-              <p className="alert alert-success">Felicitaciones, All Done!!</p>
-            ) : (
-              todoPending === true && (
-                <p className="alert alert-warning">Tienes tareas pendientes</p>
-              )
-            )}
-          </span>
         </div>
         <div className="col-8">
           <table className="table table-striped">
@@ -72,16 +63,32 @@ const TodoList = () => {
               </tr>
             </thead>
             <tbody>
-              {
-                todos.map((todo) => (
-                  <tr key={todo.id}>
-                    <td>{todo.label}</td>
-                    <td>{todo.done ? "Completada": "Incompleta"}</td>
-                    <td>{todo.label}</td>
-                  </tr>
-                ))}
+              {todos.map((todo) => (
+                <tr key={todo.id}>
+                  <td>{todo.label}</td>
+                  <td>{todo.done ? "Completada" : "Incompleta"}</td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(todo.id)}
+                      className="btn btn-danger"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
+          <span>{todos.length === 0 && <p className="alert alert-success">Ingresa una tarea para empezar</p>}</span>
+          <span>
+            {allDone === true ? (
+              <p className="alert alert-success">Congrast, your done!</p>
+            ) : (
+              todoPending === true && (
+                <p className="alert alert-warning">Tienes tareas pendientes</p>
+              )
+            )}
+          </span>
         </div>
       </div>
     </div>

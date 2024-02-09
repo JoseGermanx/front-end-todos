@@ -1,14 +1,14 @@
-
-import './App.css'
-import TodoList from './components/TodoList'
+import "./App.css";
+import Navbar from "./components/Navbar";
+import TodoList from "./components/TodoList";
 
 function App() {
-
   return (
     <>
-     <TodoList /> 
+      <Navbar />
+      <TodoList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

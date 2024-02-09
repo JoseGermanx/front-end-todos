@@ -29,7 +29,6 @@ const CreateToDo = () => {
         }
 
         const handleKeyDown = async (e) => {
-            e.preventDefault();
             //e.keyCode === 13 || 
             if (e.type === "click") {
                 await handleCreate(description, done);
