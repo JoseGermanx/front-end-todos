@@ -6,6 +6,7 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [allDone, setAllDone] = useState(false);
   const [todoPending, setTodoPending] = useState(false);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     Api.getTodos()
@@ -97,10 +98,32 @@ const TodoList = () => {
           </table>
           <span>
             {allDone === true ? (
-              <p className="alert alert-success">Congrast, your done!</p>
+              <div
+                className="alert alert-success alert-dismissible fade show"
+                role="alert"
+              >
+                Congrast, your done!
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                ></button>
+              </div>
             ) : (
               todoPending === true && (
-                <p className="alert alert-warning">Tienes tareas pendientes</p>
+                <div
+                  className="alert alert-warning alert-dismissible fade show"
+                  role="alert"
+                >
+                  Tienes tareas pendientes
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  ></button>
+                </div>
               )
             )}
           </span>
@@ -117,7 +140,7 @@ const TodoList = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Modal title
+                Actualizar tarea
               </h1>
               <button
                 type="button"
@@ -126,7 +149,24 @@ const TodoList = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">...</div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="exampleInputTodo" className="form-label">
+                    Tarea
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="exampleInputTodo"
+                    aria-describedby="emailHelp"
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
+              </form>
+            </div>
             <div className="modal-footer">
               <button
                 type="button"
