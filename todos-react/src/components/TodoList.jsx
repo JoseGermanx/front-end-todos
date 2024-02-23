@@ -6,7 +6,6 @@ const TodoList = () => {
   const [todos, setTodos] = useState([]);
   const [allDone, setAllDone] = useState(false);
   const [todoPending, setTodoPending] = useState(false);
-  const [show, setShow] = useState(false);
 
   useEffect(() => {
     Api.getTodos()
